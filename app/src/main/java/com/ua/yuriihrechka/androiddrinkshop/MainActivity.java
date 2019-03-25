@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         btn_continue = (Button)findViewById(R.id.btn_continue);
 
         //printKeyHash();
+
     }
 
     private void printKeyHash() {
