@@ -45,8 +45,8 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE = 1000;
-    private Button btn_continue;
-    private IDrinkShopAPI mService;
+    Button btn_continue;
+    IDrinkShopAPI mService;
 
 
 
@@ -167,7 +167,14 @@ public class MainActivity extends AppCompatActivity {
         Button btn_register = (Button)register_layout.findViewById(R.id.btn_register);
         edt_birthdate.addTextChangedListener(new PatternedTextWatcher("####-##-##"));
 
-        final AlertDialog dialog = builder.create();
+        //final AlertDialog dialog = builder.create();
+
+        ////
+
+        builder.setView(register_layout);
+        final AlertDialog dialog=builder.create();
+
+        ////
 
 
         btn_register.setOnClickListener(new View.OnClickListener() {
@@ -192,7 +199,9 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                final SpotsDialog waitingDialog = new SpotsDialog(MainActivity.this);
+                //final SpotsDialog waitingDialog = new SpotsDialog(MainActivity.this);
+                final android.app.AlertDialog waitingDialog=new SpotsDialog(MainActivity.this);
+
                 waitingDialog.show();
                 waitingDialog.setMessage("Please waiting...");
 
@@ -210,6 +219,12 @@ public class MainActivity extends AppCompatActivity {
                         User user = response.body();
                         if (TextUtils.isEmpty(user.getError_msg())) {
                             Toast.makeText(MainActivity.this, "User register successfully", Toast.LENGTH_LONG).show();
+
+                            //Common.currentUser=response.body();
+                            //// Start new Activity
+                            //startActivity(new Intent(MainActivity.this,HomeActivity.class));
+                            //finish();
+
                         }
                     }
 
