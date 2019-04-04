@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     Button btn_continue;
     IDrinkShopAPI mService;
 
+/////////////////////////////////
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
