@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 1000;
     Button btn_continue;
     IDrinkShopAPI mService;
-    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
