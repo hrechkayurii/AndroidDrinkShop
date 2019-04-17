@@ -51,22 +51,6 @@ public class MainActivity extends AppCompatActivity {
     Button btn_continue;
     IDrinkShopAPI mService;
 
-   /* @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        switch (requestCode)
-        {
-            case REQUEST_PERMISSION:
-            {
-                if(grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED)
-                    Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -206,10 +190,6 @@ public class MainActivity extends AppCompatActivity {
         Button btn_register = (Button) register_layout.findViewById(R.id.btn_register);
         edt_birthdate.addTextChangedListener(new PatternedTextWatcher("####-##-##"));
 
-        //final AlertDialog dialog = builder.create();
-
-        ////
-
         builder.setView(register_layout);
         final AlertDialog dialog = builder.create();
 
@@ -294,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-   /*  private void printKeyHash() {
+    /*private void printKeyHash() {
 
        try {
 
@@ -331,4 +311,3 @@ public class MainActivity extends AppCompatActivity {
 }
 
 
-// 2 // 10
