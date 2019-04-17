@@ -1,7 +1,6 @@
 package com.ua.yuriihrechka.androiddrinkshop;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
+
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
