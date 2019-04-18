@@ -57,9 +57,6 @@ public class MainActivity extends AppCompatActivity {
 
         //printKeyHash();
 
-
-
-
         mService = Common.getApiDrinkShop();
 
         btn_continue = (Button) findViewById(R.id.btn_continue);
