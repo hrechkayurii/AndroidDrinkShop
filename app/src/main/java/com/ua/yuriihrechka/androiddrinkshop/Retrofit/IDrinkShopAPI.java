@@ -1,11 +1,16 @@
 package com.ua.yuriihrechka.androiddrinkshop.Retrofit;
 
+import com.ua.yuriihrechka.androiddrinkshop.Model.Banner;
 import com.ua.yuriihrechka.androiddrinkshop.Model.CheckUserResponse;
 import com.ua.yuriihrechka.androiddrinkshop.Model.User;
 
+import java.util.List;
+
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 
@@ -27,4 +32,7 @@ import retrofit2.http.POST;
         @FormUrlEncoded
         @POST("getuser.php")
         Call<User> getUserInformation(@Field("phone") String phone);
+
+        @GET("getbanner.php")
+        Observable<List<Banner>>getBanners();
 }
