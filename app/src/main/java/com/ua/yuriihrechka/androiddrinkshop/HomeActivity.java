@@ -13,9 +13,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.TextView;
+
+import com.ua.yuriihrechka.androiddrinkshop.Utils.Common;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    TextView txt_name, txt_phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,15 @@ public class HomeActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        //
+        View headerView = navigationView.getHeaderView(0);
+        txt_name = (TextView)headerView.findViewById(R.id.txt_name);
+        txt_phone = (TextView)headerView.findViewById(R.id.txt_phone);
+
+        // set info
+        txt_name.setText(Common.currentUser.getName());
+        txt_phone.setText(Common.currentUser.getPhone());
     }
 
     @Override

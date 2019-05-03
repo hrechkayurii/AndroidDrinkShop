@@ -85,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
             //Get user phone and check it exists on server
 
             Log.d("ERROR", "101.1");
+
+            // autologin
             AccountKit.getCurrentAccount(new AccountKitCallback<Account>() {
                 @Override
                 public void onSuccess(final Account account) {

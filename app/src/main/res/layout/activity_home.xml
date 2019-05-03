@@ -5,6 +5,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
@@ -19,7 +20,10 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        android:background="@color/navBackground"
         app:headerLayout="@layout/nav_header_home"
-        app:menu="@menu/activity_home_drawer" />
+        app:menu="@menu/activity_home_drawer"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"/>
 
 </android.support.v4.widget.DrawerLayout>
