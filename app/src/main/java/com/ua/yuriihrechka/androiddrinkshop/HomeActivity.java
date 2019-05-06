@@ -3,6 +3,8 @@ package com.ua.yuriihrechka.androiddrinkshop;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -18,7 +20,9 @@ import android.widget.TextView;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.ua.yuriihrechka.androiddrinkshop.Adapter.CategoryAdapter;
 import com.ua.yuriihrechka.androiddrinkshop.Model.Banner;
+import com.ua.yuriihrechka.androiddrinkshop.Model.Category;
 import com.ua.yuriihrechka.androiddrinkshop.Retrofit.IDrinkShopAPI;
 import com.ua.yuriihrechka.androiddrinkshop.Utils.Common;
 
@@ -39,6 +43,8 @@ public class HomeActivity extends AppCompatActivity
 
     IDrinkShopAPI mService;
 
+    RecyclerView lst_menu;
+
     //RXjava
     CompositeDisposable compositeDisposable = new CompositeDisposable();
 
@@ -50,6 +56,10 @@ public class HomeActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         mService = Common.getApiDrinkShop();
+
+        lst_menu = (RecyclerView)findViewById(R.id.first_menu);
+        lst_menu.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        lst_menu.setHasFixedSize(true);
 
         sliderLayout = (SliderLayout)findViewById(R.id.slider);
 
@@ -80,6 +90,30 @@ public class HomeActivity extends AppCompatActivity
 
         // get banner
         getBannerImage();
+
+        // get menu
+        getMenu();
+    }
+
+    private void getMenu() {
+
+        compositeDisposable.add(mService.getMenu()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<Category>>() {
+                    @Override
+                    public void accept(List<Category> categories) throws Exception {
+                        displayMenu(categories);
+                    }
+                }));
+
+    }
+
+    private void displayMenu(List<Category> categories) {
+
+        CategoryAdapter categoryAdapter = new CategoryAdapter(this, categories);
+        lst_menu.setAdapter(categoryAdapter);
+
     }
 
     private void getBannerImage() {
@@ -90,20 +124,13 @@ public class HomeActivity extends AppCompatActivity
         .subscribe(new Consumer<List<Banner>>() {
             @Override
             public void accept(List<Banner> banners) throws Exception {
-                dipolayImage(banners);
+                displayImage(banners);
             }
         }));
 
-
     }
 
-    @Override
-    protected void onDestroy() {
-        compositeDisposable.dispose();
-        super.onDestroy();
-    }
-
-    private void dipolayImage(List<Banner> banners) {
+    private void displayImage(List<Banner> banners) {
 
         HashMap<String, String> bannerMap = new HashMap<>();
         for (Banner item:banners){
@@ -121,6 +148,14 @@ public class HomeActivity extends AppCompatActivity
 
 
     }
+
+    @Override
+    protected void onDestroy() {
+        compositeDisposable.dispose();
+        super.onDestroy();
+    }
+
+
 
     @Override
     public void onBackPressed() {

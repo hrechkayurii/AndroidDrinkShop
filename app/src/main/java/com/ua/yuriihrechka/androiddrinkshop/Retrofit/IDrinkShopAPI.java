@@ -1,6 +1,7 @@
 package com.ua.yuriihrechka.androiddrinkshop.Retrofit;
 
 import com.ua.yuriihrechka.androiddrinkshop.Model.Banner;
+import com.ua.yuriihrechka.androiddrinkshop.Model.Category;
 import com.ua.yuriihrechka.androiddrinkshop.Model.CheckUserResponse;
 import com.ua.yuriihrechka.androiddrinkshop.Model.User;
 
@@ -35,6 +36,9 @@ import retrofit2.http.POST;
 
         @GET("getbanner.php")
         Observable<List<Banner>>getBanners();
+
+        @GET("getmenu.php")
+        Observable<List<Category>>getMenu();
 
         // image
         // https://picua.org
