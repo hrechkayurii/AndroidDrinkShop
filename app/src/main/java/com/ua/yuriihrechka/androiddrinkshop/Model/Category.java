@@ -6,6 +6,10 @@ public class Category {
     public String name;
     public String link;
 
+    public Category() {
+
+    }
+
     public String getID() {
         return ID;
     }
