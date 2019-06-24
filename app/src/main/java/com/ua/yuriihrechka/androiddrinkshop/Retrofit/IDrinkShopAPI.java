@@ -36,6 +36,10 @@ import retrofit2.http.POST;
         @GET("getbanner.php")
         Observable<List<Banner>>getBanners();
 
+
+        @GET("getmenu.php")
+        Observable<List<Banner>>getMenu();
+
         // image
         // https://picua.org
 }
