@@ -9,9 +9,9 @@ public class Common {
     //private static final String BASE_URL = "http://localhost/drinkshop/";  // http://localhost/drinkshop/
 
     public static User currentUser = null;
-    //private static final String BASE_URL = "http://192.168.0.109/drinkshop/";
+    private static final String BASE_URL = "http://192.168.0.109/drinkshop/";
     //private static final String BASE_URL = "http://localhost/drinkshop/";
-    private static final String BASE_URL = "http://53.103.50.42/drinkshop/";
+    //private static final String BASE_URL = "http://53.103.50.42/drinkshop/";
 
     public static IDrinkShopAPI getApiDrinkShop(){
         return RetrofitClient.getClient(BASE_URL).create(IDrinkShopAPI.class);
