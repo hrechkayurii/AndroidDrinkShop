@@ -3,6 +3,7 @@ package com.ua.yuriihrechka.androiddrinkshop.Retrofit;
 import com.ua.yuriihrechka.androiddrinkshop.Model.Banner;
 import com.ua.yuriihrechka.androiddrinkshop.Model.Category;
 import com.ua.yuriihrechka.androiddrinkshop.Model.CheckUserResponse;
+import com.ua.yuriihrechka.androiddrinkshop.Model.Drink;
 import com.ua.yuriihrechka.androiddrinkshop.Model.User;
 
 import java.util.List;
@@ -28,6 +29,9 @@ import retrofit2.http.POST;
                                    @Field("address") String address,
                                    @Field("birthdate") String birthdate);
 
+        @FormUrlEncoded
+        @POST("getdrink.php")
+        Call<Drink> getDrink(@Field("menuid") String menuid);
 
 
         @FormUrlEncoded
