@@ -57,7 +57,7 @@ public class HomeActivity extends AppCompatActivity
 
         mService = Common.getApiDrinkShop();
 
-        lst_menu = (RecyclerView)findViewById(R.id.first_menu);
+        lst_menu = (RecyclerView)findViewById(R.id.lst_menu);
         lst_menu.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         lst_menu.setHasFixedSize(true);
 
