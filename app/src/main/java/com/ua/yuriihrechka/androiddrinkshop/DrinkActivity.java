@@ -43,6 +43,7 @@ public class DrinkActivity extends AppCompatActivity {
         lst_drink.setHasFixedSize(true);
 
         txt_banner_name = (TextView)findViewById(R.id.txt_menu_name);
+        txt_banner_name.setText(Common.currentCategory.name);
 
         loudListDrink(Common.currentCategory.ID);
     }
