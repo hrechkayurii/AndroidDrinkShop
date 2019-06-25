@@ -31,7 +31,7 @@ import retrofit2.http.POST;
 
         @FormUrlEncoded
         @POST("getdrink.php")
-        Observable<List<Drink>> getDrink(@Field("menuid") String menuid);
+        Observable<List<Drink>>getDrink(@Field("menuid") String menuid);
 
 
         @FormUrlEncoded

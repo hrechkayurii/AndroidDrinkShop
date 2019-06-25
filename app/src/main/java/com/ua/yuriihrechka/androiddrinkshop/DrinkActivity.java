@@ -45,7 +45,7 @@ public class DrinkActivity extends AppCompatActivity {
         txt_banner_name = (TextView)findViewById(R.id.txt_menu_name);
         txt_banner_name.setText(Common.currentCategory.name);
 
-        loudListDrink(Common.currentCategory.ID);
+        loudListDrink(Common.currentCategory.id);
     }
 
     private void loudListDrink(String menuid) {
