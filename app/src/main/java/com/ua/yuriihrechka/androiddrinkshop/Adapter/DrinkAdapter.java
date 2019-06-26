@@ -1,6 +1,7 @@
 package com.ua.yuriihrechka.androiddrinkshop.Adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
@@ -76,6 +77,34 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkViewHolder> {
 
         RadioButton rdi_size_M = (RadioButton)itemView.findViewById(R.id.rdi_size_M);
         RadioButton rdi_size_L = (RadioButton)itemView.findViewById(R.id.rdi_size_L);
+
+        RadioButton rdi_sugar_100 = (RadioButton)itemView.findViewById(R.id.rdi_sugar_100);
+        RadioButton rdi_sugar_70 = (RadioButton)itemView.findViewById(R.id.rdi_sugar_70);
+        RadioButton rdi_sugar_50 = (RadioButton)itemView.findViewById(R.id.rdi_sugar_50);
+        RadioButton rdi_sugar_30 = (RadioButton)itemView.findViewById(R.id.rdi_sugar_30);
+        RadioButton rdi_sugar_free = (RadioButton)itemView.findViewById(R.id.rdi_sugar_free);
+
+        RadioButton rdi_ice_100 = (RadioButton)itemView.findViewById(R.id.rdi_ice_100);
+        RadioButton rdi_ice_70 = (RadioButton)itemView.findViewById(R.id.rdi_ice_70);
+        RadioButton rdi_ice_50 = (RadioButton)itemView.findViewById(R.id.rdi_ice_50);
+        RadioButton rdi_ice_30 = (RadioButton)itemView.findViewById(R.id.rdi_ice_30);
+        RadioButton rdi_ice_free = (RadioButton)itemView.findViewById(R.id.rdi_ice_free);
+
+
+        Picasso.with(context)
+                .load(drinkList.get(position).link)
+                .into(img_product_dialog);
+
+        txt_product_dialog.setText(drinkList.get(position).name);
+
+        builder.setView(itemView);
+        builder.setNegativeButton("ADD TO CART", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.show();
 
 
 
