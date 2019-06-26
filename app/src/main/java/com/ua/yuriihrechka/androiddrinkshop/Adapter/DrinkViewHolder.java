@@ -2,6 +2,7 @@ package com.ua.yuriihrechka.androiddrinkshop.Adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +14,8 @@ public class DrinkViewHolder extends RecyclerView.ViewHolder implements View.OnC
     ImageView img_product;
     TextView txt_drink_name;
     TextView txt_price;
+
+    Button btn_add_to_cart;
 
     IItemClickListener itemClickListener;
 
@@ -26,6 +29,8 @@ public class DrinkViewHolder extends RecyclerView.ViewHolder implements View.OnC
         img_product = (ImageView)itemView.findViewById(R.id.image_product);
         txt_drink_name = (TextView)itemView.findViewById(R.id.txt_drink_name);
         txt_price = (TextView)itemView.findViewById(R.id.txt_price);
+
+        btn_add_to_cart = (Button)itemView.findViewById(R.id.btn_add_cart);
 
         itemView.setOnClickListener(this);
     }
