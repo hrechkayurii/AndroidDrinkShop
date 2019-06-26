@@ -23,6 +23,7 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.ua.yuriihrechka.androiddrinkshop.Adapter.CategoryAdapter;
 import com.ua.yuriihrechka.androiddrinkshop.Model.Banner;
 import com.ua.yuriihrechka.androiddrinkshop.Model.Category;
+import com.ua.yuriihrechka.androiddrinkshop.Model.Drink;
 import com.ua.yuriihrechka.androiddrinkshop.Retrofit.IDrinkShopAPI;
 import com.ua.yuriihrechka.androiddrinkshop.Utils.Common;
 
@@ -93,6 +94,23 @@ public class HomeActivity extends AppCompatActivity
 
         // get menu
         getMenu();
+
+        // topping
+        getToppingList();
+    }
+
+    private void getToppingList() {
+
+        compositeDisposable.add(mService.getDrink(Common.TOPPING_MENU_ID)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<Drink>>() {
+                    @Override
+                    public void accept(List<Drink> drinks) throws Exception {
+                        Common.toppingList = drinks;
+                    }
+                }));
+
     }
 
     private void getMenu() {

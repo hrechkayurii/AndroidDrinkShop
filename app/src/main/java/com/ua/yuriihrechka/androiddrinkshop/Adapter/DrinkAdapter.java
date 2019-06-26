@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -90,6 +91,9 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkViewHolder> {
         RadioButton rdi_ice_30 = (RadioButton)itemView.findViewById(R.id.rdi_ice_30);
         RadioButton rdi_ice_free = (RadioButton)itemView.findViewById(R.id.rdi_ice_free);
 
+        RecyclerView recycler_topping = (RecyclerView)itemView.findViewById(R.id.recycler_topping);
+        recycler_topping.setLayoutManager(new LinearLayoutManager(context));
+        recycler_topping.setHasFixedSize(true);
 
         Picasso.with(context)
                 .load(drinkList.get(position).link)
