@@ -51,7 +51,7 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkViewHolder> {
         holder.btn_add_to_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showAddTocartDialog(position);
+                showAddToCartDialog(position);
             }
         });
 
@@ -63,7 +63,7 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkViewHolder> {
         });
     }
 
-    private void showAddTocartDialog(int position) {
+    private void showAddToCartDialog(int position) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         View itemView = LayoutInflater.from(context)
