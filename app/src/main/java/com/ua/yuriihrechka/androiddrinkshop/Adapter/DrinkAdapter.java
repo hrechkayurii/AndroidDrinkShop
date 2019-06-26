@@ -20,6 +20,7 @@ import com.squareup.picasso.Picasso;
 import com.ua.yuriihrechka.androiddrinkshop.Interface.IItemClickListener;
 import com.ua.yuriihrechka.androiddrinkshop.Model.Drink;
 import com.ua.yuriihrechka.androiddrinkshop.R;
+import com.ua.yuriihrechka.androiddrinkshop.Utils.Common;
 
 import java.util.List;
 
@@ -94,6 +95,9 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkViewHolder> {
         RecyclerView recycler_topping = (RecyclerView)itemView.findViewById(R.id.recycler_topping);
         recycler_topping.setLayoutManager(new LinearLayoutManager(context));
         recycler_topping.setHasFixedSize(true);
+
+        MultiChoiceAdapter adapter = new MultiChoiceAdapter(context, Common.toppingList);
+        recycler_topping.setAdapter(adapter);
 
         Picasso.with(context)
                 .load(drinkList.get(position).link)

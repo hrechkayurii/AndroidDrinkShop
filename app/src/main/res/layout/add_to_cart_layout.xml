@@ -302,43 +302,41 @@
                 android:background="@android:color/white">
 
 
-
                 <RadioGroup
-                    android:layout_marginTop="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
 
                     <RadioButton
                         android:id="@+id/rdi_ice_100"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="100%"/>
+                        android:text="100%" />
 
                     <RadioButton
                         android:id="@+id/rdi_ice_70"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="70%"/>
+                        android:text="70%" />
 
                     <RadioButton
                         android:id="@+id/rdi_ice_50"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="50%"/>
+                        android:text="50%" />
 
                     <RadioButton
                         android:id="@+id/rdi_ice_30"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="30%"/>
+                        android:text="30%" />
 
                     <RadioButton
                         android:id="@+id/rdi_ice_free"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Free"/>
+                        android:text="Free" />
 
 
                 </RadioGroup>
@@ -386,7 +384,16 @@
                     android:textStyle="bold"
                     android:textSize="20sp"/>
 
-
+                <TextView
+                    android:text="REQUIRED"
+                    android:padding="8dp"
+                    android:background="@drawable/text_round_gray"
+                    android:layout_alignParentRight="true"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
 
             </RelativeLayout>

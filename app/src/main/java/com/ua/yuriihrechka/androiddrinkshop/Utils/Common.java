@@ -19,6 +19,11 @@ public class Common {
     public static Category currentCategory = null;
     public static List<Drink> toppingList = new ArrayList<>();
 
+    public static List<String> toppingAdded = new ArrayList<>();
+    public static double toppingPrice = 0.0;
+
+
+
     //private static final String BASE_URL = "http://192.168.0.109/drinkshop/";
     //private static final String BASE_URL = "http://localhost/drinkshop/";
     private static final String BASE_URL = "http://53.103.50.42/drinkshop/";
