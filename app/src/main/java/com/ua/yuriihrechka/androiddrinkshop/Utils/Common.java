@@ -22,6 +22,10 @@ public class Common {
     public static List<String> toppingAdded = new ArrayList<>();
     public static double toppingPrice = 0.0;
 
+    public static int sizeOfCup = -1; // error
+    public static int sugar = -1; // error
+    public static int ice = -1; // error
+
 
 
     //private static final String BASE_URL = "http://192.168.0.109/drinkshop/";
