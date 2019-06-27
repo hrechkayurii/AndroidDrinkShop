@@ -46,8 +46,6 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    // test
-
     private static final int REQUEST_CODE = 1000;
     private static final int REQUEST_PERMISSION = 1001;
     Button btn_continue;
