@@ -235,7 +235,7 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkViewHolder> {
                 }
 
 
-                showConfirmDialog(position, txt_count.getNumber(), Common.sizeOfCup, Common.sugar, Common.ice);
+                showConfirmDialog(position, txt_count.getNumber());
                 dialogInterface.dismiss();
             }
         });
@@ -247,7 +247,7 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkViewHolder> {
 
     }
 
-    private void showConfirmDialog(int position, String number, int sizeOfCup, int sugar, int ice) {
+    private void showConfirmDialog(int position, String number) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         View itemView = LayoutInflater.from(context)
