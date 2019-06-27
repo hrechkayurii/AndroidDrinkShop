@@ -269,10 +269,14 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkViewHolder> {
         .append(number)
         .append(Common.sizeOfCup == 0 ? " Size M": " Size L"));
 
-        txt_ice.setText(new StringBuilder("Ice: ").append("%").toString());
-        txt_sugar.setText(new StringBuilder("Sugar: ").append("%").toString());
+        txt_ice.setText(new StringBuilder("Ice: ").append(Common.ice).append("%").toString());
+        txt_sugar.setText(new StringBuilder("Sugar: ").append(Common.sugar).append("%").toString());
 
         double price = (Double.parseDouble(drinkList.get(position).price) * Double.parseDouble(number) * Common.toppingPrice);
+
+        if (Common.sizeOfCup == 1){
+            price+=3.0;
+        }
         txt_product_price.setText(new StringBuilder("$").append(price));
 
         StringBuilder topping_final_comment = new StringBuilder("");
