@@ -280,8 +280,21 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkViewHolder> {
             topping_final_comment.append(line).append("\n");
         }
 
+        txt_topping_extra.setText(topping_final_comment);
+
+        builder.setNegativeButton("CONFIRM", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                // add in sql
 
 
+                dialogInterface.dismiss();
+            }
+        });
+
+        builder.setView(itemView);
+        builder.show();
 
 
 
