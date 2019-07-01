@@ -9,15 +9,17 @@ import com.ua.yuriihrechka.androiddrinkshop.Model.User;
 import java.util.List;
 
 import io.reactivex.Observable;
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 
-
-    public interface IDrinkShopAPI {
+public interface IDrinkShopAPI {
         @FormUrlEncoded
         @POST("checkuser.php")
         Call<CheckUserResponse> checkUserExists(@Field("phone") String phone);
@@ -43,6 +45,10 @@ import retrofit2.http.POST;
 
         @GET("getmenu.php")
         Observable<List<Category>>getMenu();
+
+        @Multipart
+        @POST("upload.php")
+        Call<String>uploadFile(@Part MultipartBody.Part phone, @Part MultipartBody.Part file);
 
         // image
         // https://picua.org

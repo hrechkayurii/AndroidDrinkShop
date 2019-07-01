@@ -1,6 +1,7 @@
 package com.ua.yuriihrechka.androiddrinkshop;
 
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -55,6 +56,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, new String[]{
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+            }, REQUEST_PERMISSION);
+        }
 
         Log.d("ERROR", "001");
        // printKeyHash();
@@ -160,6 +167,30 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        switch (requestCode){
+
+            case REQUEST_PERMISSION:
+
+            {
+
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    Toast.makeText(this, "PERMISSION_GRANTED", Toast.LENGTH_LONG).show();
+                }else {
+                    Toast.makeText(this, "PERMISSION_DENIED", Toast.LENGTH_LONG).show();
+                }
+            }
+            break;
+            default:
+                break;
+
+        }
 
     }
 
