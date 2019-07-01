@@ -2,6 +2,7 @@ package com.ua.yuriihrechka.androiddrinkshop.Utils;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.support.annotation.Nullable;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,7 +33,7 @@ public class ProgressRequestBody extends RequestBody {
         return file.length();
     }
 
-    @javax.annotation.Nullable
+    @Nullable
     @Override
     public MediaType contentType() {
         return MediaType.parse("image/*");
