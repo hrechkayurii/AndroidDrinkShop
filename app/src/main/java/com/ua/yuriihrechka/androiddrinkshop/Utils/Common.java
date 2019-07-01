@@ -1,5 +1,7 @@
 package com.ua.yuriihrechka.androiddrinkshop.Utils;
 
+import com.ua.yuriihrechka.androiddrinkshop.Database.DataSource.CartRepository;
+import com.ua.yuriihrechka.androiddrinkshop.Database.Local.CartDatabase;
 import com.ua.yuriihrechka.androiddrinkshop.Model.Category;
 import com.ua.yuriihrechka.androiddrinkshop.Model.Drink;
 import com.ua.yuriihrechka.androiddrinkshop.Model.User;
@@ -27,10 +29,14 @@ public class Common {
     public static int ice = -1; // error
 
 
+    // database
+    public static CartDatabase cartDatabase;
+    public static CartRepository cartRepository;
 
-    //private static final String BASE_URL = "http://192.168.0.109/drinkshop/";
+
+    private static final String BASE_URL = "http://192.168.0.103/drinkshop/";
     //private static final String BASE_URL = "http://localhost/drinkshop/";
-    private static final String BASE_URL = "http://53.103.50.42/drinkshop/";
+    //private static final String BASE_URL = "http://53.103.50.42/drinkshop/";
 
     public static IDrinkShopAPI getApiDrinkShop(){
         return RetrofitClient.getClient(BASE_URL).create(IDrinkShopAPI.class);
