@@ -34,9 +34,9 @@ public class Common {
     public static CartRepository cartRepository;
 
 
-    private static final String BASE_URL = "http://192.168.0.103/drinkshop/";
+    //private static final String BASE_URL = "http://192.168.0.103/drinkshop/";
     //private static final String BASE_URL = "http://localhost/drinkshop/";
-    //private static final String BASE_URL = "http://53.103.50.42/drinkshop/";
+    private static final String BASE_URL = "http://53.103.50.42/drinkshop/";
 
     public static IDrinkShopAPI getApiDrinkShop(){
         return RetrofitClient.getClient(BASE_URL).create(IDrinkShopAPI.class);
