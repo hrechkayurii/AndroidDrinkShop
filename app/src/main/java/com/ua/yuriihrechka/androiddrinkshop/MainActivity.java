@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             }, REQUEST_PERMISSION);
         }
 
-        Log.d("ERROR", "001");
+        Log.d("MY_APP_ERROR", "001");
        // printKeyHash();
 
         mService = Common.getApiDrinkShop();
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Log.d("ERROR", "002");
+                Log.d("MY_APP_ERROR", "002");
                 startLoginPage(LoginType.PHONE);
             }
         });
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (AccountKit.getCurrentAccessToken()!=null){
 
-            Log.d("ERROR", "101");
+            Log.d("MY_APP_ERROR", "101");
 
             final android.app.AlertDialog alertDialog=new SpotsDialog(MainActivity.this);
             alertDialog.show();
@@ -89,14 +89,14 @@ public class MainActivity extends AppCompatActivity {
 
             //Get user phone and check it exists on server
 
-            Log.d("ERROR", "101.1");
+            Log.d("MY_APP_ERROR", "101.1");
 
             // autologin
             AccountKit.getCurrentAccount(new AccountKitCallback<Account>() {
                 @Override
                 public void onSuccess(final Account account) {
 
-                    Log.d("ERROR", "102");
+                    Log.d("MY_APP_ERROR", "102");
 
                     mService.checkUserExists(account.getPhoneNumber().toString())
                             .enqueue(new Callback<CheckUserResponse>() {
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                                     CheckUserResponse userResponse=response.body();
                                     if(userResponse.isExists()){
 
-                                        Log.d("ERROR", "103");
+                                        Log.d("MY_APP_ERROR", "103");
 
                                         // Fetch Information
                                         mService.getUserInformation(account.getPhoneNumber().toString())
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                                                         // If user already exists just start new Activity
                                                         alertDialog.dismiss();
 
-                                                        Log.d("ERROR", "104");
+                                                        Log.d("MY_APP_ERROR", "104");
 
                                                         Common.currentUser=response.body();
 
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
                                                     @Override
                                                     public void onFailure(Call<User> call, Throwable t) {
 
-                                                        Log.d("ERROR", "105");
+                                                        Log.d("MY_APP_ERROR", "105");
                                                        // alertDialog.dismiss();
                                                         Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
 
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
                                         // need register
                                         alertDialog.dismiss();
 
-                                        Log.d("ERROR", "106");
+                                        Log.d("MY_APP_ERROR", "106");
 
                                         showRegisterDialog(account.getPhoneNumber().toString());
                                     }
@@ -148,8 +148,8 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onFailure(Call<CheckUserResponse> call, Throwable t) {
 
-                                    Log.i("ERROR", t.getMessage().toString());
-                                    Log.d("ERROR", "107");
+                                    Log.i("MY_APP_ERROR", t.getMessage().toString());
+                                    Log.d("MY_APP_ERROR", "107");
                                 }
                             });
                 }
@@ -157,8 +157,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onError(AccountKitError accountKitError) {
 
-                    Log.i("ERROR",accountKitError.getErrorType().getMessage());
-                    Log.d("ERROR", "108");
+                    Log.i("MY_APP_ERROR",accountKitError.getErrorType().getMessage());
+                    Log.d("MY_APP_ERROR", "108");
 
                 }
             });
@@ -184,11 +184,13 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(this, "PERMISSION_GRANTED", Toast.LENGTH_LONG).show();
                 }else {
                     Toast.makeText(this, "PERMISSION_DENIED", Toast.LENGTH_LONG).show();
+                    Log.d("MY_APP_ERROR", "108_1");
                 }
             }
             break;
             default:
                 break;
+
 
         }
 
@@ -203,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,
                 builder.build());
 
-        Log.d("ERROR", "003");
+        Log.d("MY_APP_ERROR", "003");
 
         startActivityForResult(intent, REQUEST_CODE);
 
@@ -214,12 +216,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        Log.d("ERROR", "1");
+        Log.d("MY_APP_ERROR", "1");
 
         if(requestCode==REQUEST_CODE){
             AccountKitLoginResult result=data.getParcelableExtra(AccountKitLoginResult.RESULT_KEY);
 
-            Log.d("ERROR", "2");
+            Log.d("MY_APP_ERROR", "2");
             if(result.getError()!=null){
                 Toast.makeText(this, ""+result.getError().getErrorType(), Toast.LENGTH_SHORT).show();
             }else if(result.wasCancelled()){
@@ -227,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else {
 
-                Log.d("ERROR", "3");
+                Log.d("MY_APP_ERROR", "3");
 
                 if(result.getAccessToken()!=null){
                     final android.app.AlertDialog alertDialog=new SpotsDialog(MainActivity.this);
@@ -236,13 +238,13 @@ public class MainActivity extends AppCompatActivity {
 
                     //Get user phone and check it exists on server
 
-                    Log.d("ERROR", "4");
+                    Log.d("MY_APP_ERROR", "4");
 
                     AccountKit.getCurrentAccount(new AccountKitCallback<Account>() {
                         @Override
                         public void onSuccess(final Account account) {
 
-                            Log.d("ERROR", "5");
+                            Log.d("MY_APP_ERROR", "5");
 
                             mService.checkUserExists(account.getPhoneNumber().toString())
                                     .enqueue(new Callback<CheckUserResponse>() {
@@ -252,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
                                             CheckUserResponse userResponse=response.body();
                                             if(userResponse.isExists()){
 
-                                                Log.d("ERROR", "6");
+                                                Log.d("MY_APP_ERROR", "6");
 
                                                 // Fetch Information
                                                 mService.getUserInformation(account.getPhoneNumber().toString())
@@ -260,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
                                                             @Override
                                                             public void onResponse(Call<User> call, Response<User> response) {
 
-                                                                Log.d("ERROR", "7");
+                                                                Log.d("MY_APP_ERROR", "7");
 
                                                                 // If user already exists just start new Activity
                                                                 alertDialog.dismiss();
@@ -275,7 +277,7 @@ public class MainActivity extends AppCompatActivity {
                                                             public void onFailure(Call<User> call, Throwable t) {
                                                                 Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
 
-                                                                Log.d("ERROR", "8");
+                                                                Log.d("MY_APP_ERROR", "8");
                                                             }
                                                         });
 
@@ -285,6 +287,7 @@ public class MainActivity extends AppCompatActivity {
                                                 alertDialog.dismiss();
 
                                                 showRegisterDialog(account.getPhoneNumber().toString());
+                                                Log.d("MY_APP_ERROR", "1001");
                                             }
                                         }
 
@@ -298,7 +301,8 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onError(AccountKitError accountKitError) {
 
-                            Log.i("ERROR",accountKitError.getErrorType().getMessage());
+                            Log.i("MY_APP_ERROR",accountKitError.getErrorType().getMessage());
+                            Log.d("MY_APP_ERROR", "1002");
 
                         }
                     });
@@ -314,7 +318,7 @@ public class MainActivity extends AppCompatActivity {
         final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("REGISTER");
 
-        Log.d("ERROR", "201");
+        Log.d("MY_APP_ERROR", "201");
 
         LayoutInflater inflater = this.getLayoutInflater();
         View register_layout = inflater.inflate(R.layout.register_layout, null);
@@ -331,7 +335,7 @@ public class MainActivity extends AppCompatActivity {
 
         ////
 
-        Log.d("ERROR", "202");
+        Log.d("MY_APP_ERROR", "202");
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -339,7 +343,7 @@ public class MainActivity extends AppCompatActivity {
 
                 dialog.dismiss();
 
-                Log.d("ERROR", "203");
+                Log.d("MY_APP_ERROR", "203");
 
                 if (TextUtils.isEmpty(edt_name.getText().toString())) {
                     Toast.makeText(MainActivity.this, "Please enter name.", Toast.LENGTH_LONG).show();
@@ -359,12 +363,12 @@ public class MainActivity extends AppCompatActivity {
                 //final SpotsDialog waitingDialog = new SpotsDialog(MainActivity.this);
                 final android.app.AlertDialog waitingDialog = new SpotsDialog(MainActivity.this);
 
-                Log.d("ERROR", "204");
+                Log.d("MY_APP_ERROR", "204");
 
                 waitingDialog.show();
                 waitingDialog.setMessage("Please waiting...");
 
-                Log.d("ERROR", "204_1");
+                Log.d("MY_APP_ERROR", "204_1");
 
                 mService.registerNewUser(phone,
                         edt_name.getText().toString(),
@@ -374,11 +378,11 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<User> call, Response<User> response) {
 
-                                Log.d("ERROR", "205");
+                                Log.d("MY_APP_ERROR", "205");
 
                                 waitingDialog.dismiss();
 
-                                Log.d("ERROR", "206");
+                                Log.d("MY_APP_ERROR", "206");
 
                                 User user = response.body();
                                 if (TextUtils.isEmpty(user.getError_msg())) {
@@ -403,7 +407,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Log.d("ERROR", "207");
+        Log.d("MY_APP_ERROR", "207");
 
         dialog.show();
 

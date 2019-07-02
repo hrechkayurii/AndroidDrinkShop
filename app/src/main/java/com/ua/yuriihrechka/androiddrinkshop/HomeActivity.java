@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -103,12 +104,19 @@ public class HomeActivity extends AppCompatActivity
         });
 
 
-        img_avatar.setOnClickListener(new View.OnClickListener() {
+        Log.d("MY_APP_ERROR", "1003");
+
+        /*img_avatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Log.d("MY_APP_ERROR", "1007");
+
                 chooseImage();
             }
-        });
+        });*/
+
+        Log.d("MY_APP_ERROR", "1006");
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -124,6 +132,19 @@ public class HomeActivity extends AppCompatActivity
         txt_phone = (TextView)headerView.findViewById(R.id.txt_phone);
         img_avatar = (CircleImageView)headerView.findViewById(R.id.img_avatar);
 
+
+        Log.d("MY_APP_ERROR", "1009");
+
+        img_avatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Log.d("MY_APP_ERROR", "1007");
+
+                chooseImage();
+            }
+        });
+
         // set info
         txt_name.setText(Common.currentUser.getName());
         txt_phone.setText(Common.currentUser.getPhone());
@@ -137,6 +158,8 @@ public class HomeActivity extends AppCompatActivity
                     .into(img_avatar);
         }
 
+        Log.d("MY_APP_ERROR", "1004");
+
         // get banner
         getBannerImage();
 
@@ -148,9 +171,13 @@ public class HomeActivity extends AppCompatActivity
 
         //init database
         initDB();
+
+        Log.d("MY_APP_ERROR", "1005");
     }
 
     private void chooseImage() {
+
+        Log.d("MY_APP_ERROR", "1008");
 
         startActivityForResult(Intent.createChooser(FileUtils.createGetContentIntent(), "Select a file"),
                 PICK_FILE_REQUEST);
@@ -162,9 +189,9 @@ public class HomeActivity extends AppCompatActivity
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == RESULT_OK){
+        if (resultCode == RESULT_OK){
 
-            if (resultCode == PICK_FILE_REQUEST){
+            if (requestCode == PICK_FILE_REQUEST){
 
                 if (data != null) {
 
@@ -174,6 +201,7 @@ public class HomeActivity extends AppCompatActivity
                         uploadFile();
                     }else {
                         Toast.makeText(this, "Error upload file to server", Toast.LENGTH_LONG).show();
+                        Log.d("MY_APP_ERROR", "1006 Error upload file to server");
                     }
 
                 }
@@ -185,13 +213,18 @@ public class HomeActivity extends AppCompatActivity
 
     private void uploadFile() {
 
+
         if (selectedFileUri != null){
 
+
             File file = FileUtils.getFile(this, selectedFileUri);
+
+
 
             String fileName = new StringBuilder(Common.currentUser.getPhone())
                     .append(FileUtils.getExtension(file.toString()))
                     .toString();
+
 
             ProgressRequestBody requestFile = new ProgressRequestBody(file, this);
             final MultipartBody.Part body = MultipartBody.Part.createFormData("uploaded_file", fileName, requestFile);
