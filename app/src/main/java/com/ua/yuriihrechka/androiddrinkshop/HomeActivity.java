@@ -1,5 +1,7 @@
 package com.ua.yuriihrechka.androiddrinkshop;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -26,6 +28,7 @@ import android.widget.Toast;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
+import com.facebook.accountkit.AccountKit;
 import com.ipaulpro.afilechooser.utils.FileUtils;
 import com.nex3z.notificationbadge.NotificationBadge;
 import com.squareup.picasso.Picasso;
@@ -336,14 +339,32 @@ public class HomeActivity extends AppCompatActivity
 
 
 
+    boolean isBackButtonClicked = false;
+
     @Override
     public void onBackPressed() {
+
+
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if (isBackButtonClicked) {
+                super.onBackPressed();
+                return;
+            }
+
+            this.isBackButtonClicked = true;
+            Toast.makeText(this, "Please click back again to exit", Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateCartCount();
+        this.isBackButtonClicked = false;
     }
 
     @Override
@@ -418,6 +439,34 @@ public class HomeActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
+        } else if (id == R.id.nav_sing_out) {
+
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Exit app");
+            builder.setMessage("Exit application?");
+
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    AccountKit.logOut();
+
+                    Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+
+            builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            builder.show();
+
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -426,11 +475,7 @@ public class HomeActivity extends AppCompatActivity
     }
 
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        updateCartCount();
-    }
+
 
     @Override
     public void onProgressUpdate(int pertantage) {

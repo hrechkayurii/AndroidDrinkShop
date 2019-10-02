@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ua.yuriihrechka.androiddrinkshop.Adapter.DrinkAdapter;
 import com.ua.yuriihrechka.androiddrinkshop.Model.Drink;
@@ -65,5 +66,30 @@ public class DrinkActivity extends AppCompatActivity {
         DrinkAdapter drinkAdapter = new DrinkAdapter(this, drinks);
         lst_drink.setAdapter(drinkAdapter);
 
+    }
+
+
+
+    // exit
+
+    boolean isBackButtonClicked = false;
+
+    @Override
+    public void onBackPressed() {
+        if (isBackButtonClicked) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.isBackButtonClicked = true;
+        Toast.makeText(this, "Please click back again to exit", Toast.LENGTH_LONG).show();
+
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        this.isBackButtonClicked = false;
     }
 }

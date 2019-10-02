@@ -416,6 +416,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+
+    // exit
+
+    boolean isBackButtonClicked = false;
+
+    @Override
+    public void onBackPressed() {
+        if (isBackButtonClicked) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.isBackButtonClicked = true;
+        Toast.makeText(this, "Please click back again to exit", Toast.LENGTH_LONG).show();
+
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        this.isBackButtonClicked = false;
+    }
+
     private void printKeyHash() {
 
         try {
