@@ -1,7 +1,10 @@
 package com.ua.yuriihrechka.androiddrinkshop.Utils;
 
 import com.ua.yuriihrechka.androiddrinkshop.Database.DataSource.CartRepository;
-import com.ua.yuriihrechka.androiddrinkshop.Database.Local.CartDatabase;
+
+
+import com.ua.yuriihrechka.androiddrinkshop.Database.DataSource.FavoriteRepository;
+import com.ua.yuriihrechka.androiddrinkshop.Database.Local.RoomCartDatabase;
 import com.ua.yuriihrechka.androiddrinkshop.Model.Category;
 import com.ua.yuriihrechka.androiddrinkshop.Model.Drink;
 import com.ua.yuriihrechka.androiddrinkshop.Model.User;
@@ -30,8 +33,9 @@ public class Common {
 
 
     // database
-    public static CartDatabase cartDatabase;
+    public static RoomCartDatabase roomCartDatabase;
     public static CartRepository cartRepository;
+    public static FavoriteRepository favoriteRepository;
 
 
     public static final String BASE_URL = "http://192.168.0.110/drinkshop/";

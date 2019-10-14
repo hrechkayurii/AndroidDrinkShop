@@ -34,8 +34,11 @@ import com.nex3z.notificationbadge.NotificationBadge;
 import com.squareup.picasso.Picasso;
 import com.ua.yuriihrechka.androiddrinkshop.Adapter.CategoryAdapter;
 import com.ua.yuriihrechka.androiddrinkshop.Database.DataSource.CartRepository;
+import com.ua.yuriihrechka.androiddrinkshop.Database.DataSource.FavoriteRepository;
 import com.ua.yuriihrechka.androiddrinkshop.Database.Local.CartDataSource;
-import com.ua.yuriihrechka.androiddrinkshop.Database.Local.CartDatabase;
+
+import com.ua.yuriihrechka.androiddrinkshop.Database.Local.FavoriteDataSource;
+import com.ua.yuriihrechka.androiddrinkshop.Database.Local.RoomCartDatabase;
 import com.ua.yuriihrechka.androiddrinkshop.Model.Banner;
 import com.ua.yuriihrechka.androiddrinkshop.Model.Category;
 import com.ua.yuriihrechka.androiddrinkshop.Model.Drink;
@@ -259,8 +262,9 @@ public class HomeActivity extends AppCompatActivity
 
     private void initDB() {
 
-        Common.cartDatabase = CartDatabase.getInstance(this);
-        Common.cartRepository = CartRepository.getInstance(CartDataSource.getInstance(Common.cartDatabase.cartDAO()));
+        Common.roomCartDatabase = RoomCartDatabase.getInstance(this);
+        Common.cartRepository = CartRepository.getInstance(CartDataSource.getInstance(Common.roomCartDatabase.cartDAO()));
+        Common.favoriteRepository = FavoriteRepository.getInstance(FavoriteDataSource.getInstance(Common.roomCartDatabase.favoriteDAO()));
     }
 
     private void getToppingList() {

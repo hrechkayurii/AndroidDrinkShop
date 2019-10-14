@@ -10,17 +10,20 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.ua.yuriihrechka.androiddrinkshop.Database.ModelDB.Cart;
+import com.ua.yuriihrechka.androiddrinkshop.Database.ModelDB.Favorite;
 
-@Database(entities = {Cart.class}, version = 1, exportSchema = false)
-public abstract class CartDatabase extends RoomDatabase {
+@Database(entities = {Cart.class, Favorite.class}, version = 1, exportSchema = false)
+public abstract class RoomCartDatabase extends RoomDatabase {
 
     public abstract CartDAO cartDAO();
-    private static CartDatabase instance;
+    public abstract FavoriteDAO favoriteDAO();
 
-    public static CartDatabase getInstance(Context context){
+    private static RoomCartDatabase instance;
+
+    public static RoomCartDatabase getInstance(Context context){
 
         if (instance == null){
-            instance = Room.databaseBuilder(context, CartDatabase.class
+            instance = Room.databaseBuilder(context, RoomCartDatabase.class
             , "YH_DrinkShopDB")
                     .allowMainThreadQueries()
                     .build();
