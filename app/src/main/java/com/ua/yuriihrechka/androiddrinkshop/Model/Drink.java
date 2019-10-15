@@ -6,7 +6,7 @@ public class Drink {
     public String name;
     public String link;
     public String price;
-    public String menuid;
+    public String menuId;
 
 
 }

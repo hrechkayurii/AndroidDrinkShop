@@ -99,11 +99,11 @@ public class DrinkAdapter extends RecyclerView.Adapter<DrinkViewHolder> {
     private void addOrRemoveFavorite(Drink drink, boolean isAdd) {
 
         Favorite favorite = new Favorite();
-        favorite.id = drink.ID;
+        favorite.id = Integer.parseInt(drink.ID);
         favorite.link = drink.link;
         favorite.name = drink.name;
         favorite.price = drink.price;
-        favorite.menuId = drink.menuid;
+        favorite.menuId = drink.menuId;
 
         if (isAdd){
             Common.favoriteRepository.insertToFavorite(favorite);

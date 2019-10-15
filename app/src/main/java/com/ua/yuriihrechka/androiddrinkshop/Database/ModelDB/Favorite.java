@@ -12,9 +12,9 @@ public class Favorite {
 
 
     @NonNull
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    public String id;
+    public int id;
 
     @ColumnInfo(name = "name")
     public String name;
