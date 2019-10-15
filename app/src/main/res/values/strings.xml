@@ -17,5 +17,6 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="menu_sing_out">sing out</string>
+    <string name="menu_favorite">Favorites</string>
 
 </resources>

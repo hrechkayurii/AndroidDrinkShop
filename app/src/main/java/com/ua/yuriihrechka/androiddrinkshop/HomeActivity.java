@@ -443,6 +443,9 @@ public class HomeActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
+        } else if (id == R.id.nav_fav) {
+            startActivity(new Intent(HomeActivity.this, FavoriteListActivity.class));
+
         } else if (id == R.id.nav_sing_out) {
 
             final AlertDialog.Builder builder = new AlertDialog.Builder(this);
