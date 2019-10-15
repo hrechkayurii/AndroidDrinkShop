@@ -12,7 +12,7 @@ public class Favorite {
 
 
     @NonNull
-    @PrimaryKey()
+    @PrimaryKey
     @ColumnInfo(name = "id")
     public String id;
 
