@@ -9,39 +9,40 @@ import io.reactivex.Flowable;
 public class FavoriteRepository implements IFavoriteDataSource {
 
 
-    private IFavoriteDataSource favoriteDataSource;
-    private static FavoriteRepository instance;
+    private IFavoriteDataSource iFavoriteDataSource;
 
-    public FavoriteRepository(IFavoriteDataSource favoriteDataSource) {
-        this.favoriteDataSource = favoriteDataSource;
+
+    public FavoriteRepository(IFavoriteDataSource iFavoriteDataSource) {
+        this.iFavoriteDataSource = iFavoriteDataSource;
     }
 
-    public static FavoriteRepository getInstance(IFavoriteDataSource favoriteDataSource){
+    private static FavoriteRepository instance;
+    public static FavoriteRepository getInstance(IFavoriteDataSource iFavoriteDataSource){
 
-        if (favoriteDataSource == null){
-            instance = new FavoriteRepository(favoriteDataSource);
+        if (instance == null){
+            instance = new FavoriteRepository(iFavoriteDataSource);
 
         }
         return instance;
     }
 
     @Override
-    public Flowable<List<Favorite>> getFavItem() {
-        return favoriteDataSource.getFavItem();
+    public Flowable<List<Favorite>> getFavItems() {
+        return iFavoriteDataSource.getFavItems();
     }
 
     @Override
     public int isFavorite(int itemId) {
-        return favoriteDataSource.isFavorite(itemId);
+        return iFavoriteDataSource.isFavorite(itemId);
     }
 
     @Override
     public void insertToFavorite(Favorite... favorites) {
-        favoriteDataSource.insertToFavorite(favorites);
+        iFavoriteDataSource.insertToFavorite(favorites);
     }
 
     @Override
     public void delete(Favorite favorite) {
-        favoriteDataSource.delete(favorite);
+        iFavoriteDataSource.delete(favorite);
     }
 }

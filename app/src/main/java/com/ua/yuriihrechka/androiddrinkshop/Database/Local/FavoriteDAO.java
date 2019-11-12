@@ -16,7 +16,7 @@ import io.reactivex.Flowable;
 public interface FavoriteDAO {
 
     @Query("SELECT * FROM Favorite")
-    Flowable<List<Favorite>> getFavItem();
+    Flowable<List<Favorite>> getFavItems();
 
     @Query("SELECT EXISTS (SELECT 1 FROM Favorite WHERE id=:itemId)")
     int isFavorite(int itemId);
@@ -28,3 +28,5 @@ public interface FavoriteDAO {
     void delete(Favorite favorite);
 
 }
+
+

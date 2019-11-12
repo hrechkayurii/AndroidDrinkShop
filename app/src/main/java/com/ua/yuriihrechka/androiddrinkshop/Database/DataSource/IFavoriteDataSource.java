@@ -9,7 +9,7 @@ import io.reactivex.Flowable;
 public interface IFavoriteDataSource {
 
 
-    Flowable<List<Favorite>> getFavItem();
+    Flowable<List<Favorite>> getFavItems();
 
 
     int isFavorite(int itemId);

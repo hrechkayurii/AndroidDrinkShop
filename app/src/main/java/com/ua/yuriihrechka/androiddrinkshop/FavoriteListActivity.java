@@ -10,9 +10,9 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import com.ua.yuriihrechka.androiddrinkshop.Adapter.CartAdapter;
+
 import com.ua.yuriihrechka.androiddrinkshop.Adapter.FavoriteAdapter;
-import com.ua.yuriihrechka.androiddrinkshop.Database.ModelDB.Cart;
+
 import com.ua.yuriihrechka.androiddrinkshop.Database.ModelDB.Favorite;
 import com.ua.yuriihrechka.androiddrinkshop.Utils.Common;
 import com.ua.yuriihrechka.androiddrinkshop.Utils.RecyclerItemTouchHelper;
@@ -70,7 +70,7 @@ public class FavoriteListActivity extends AppCompatActivity implements RecyclerI
     private void loadFavoriteData() {
 
         compositeDisposable.add(
-                Common.favoriteRepository.getFavItem()
+                Common.favoriteRepository.getFavItems()
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.io())
                         .subscribe(new Consumer<List<Favorite>>() {

@@ -2,7 +2,7 @@ package com.ua.yuriihrechka.androiddrinkshop.Adapter;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.provider.ContactsContract;
+
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
@@ -32,8 +32,8 @@ import java.util.List;
 
 public class DrinkAdapter extends RecyclerView.Adapter<DrinkViewHolder> {
 
-    Context context;
-    List<Drink> drinkList;
+    private Context context;
+    private List<Drink> drinkList;
 
     public DrinkAdapter(Context context, List<Drink> drinkList) {
         this.context = context;
